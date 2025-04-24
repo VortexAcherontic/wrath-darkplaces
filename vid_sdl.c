@@ -2197,7 +2197,7 @@ void VID_EnableJoystick(qboolean enable)
 		// close SDL joystick if active
 		if (vid_sdljoystick)
 		{
-			if (SDL_IsGameController(vid_sdljoystick))
+			if (SDL_IsGameController(vid_sdljoystickindex))
 				SDL_GameControllerClose(vid_sdljoystick);
 			else
 				SDL_JoystickClose(vid_sdljoystick);
