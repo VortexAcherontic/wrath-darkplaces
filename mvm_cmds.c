@@ -4,6 +4,7 @@
 #include "clvm_cmds.h"
 #include "menu.h"
 #include "csprogs.h"
+#include "cl_steam.h"
 
 // TODO check which strings really should be engine strings
 
