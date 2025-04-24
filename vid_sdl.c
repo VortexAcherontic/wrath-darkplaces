@@ -2197,10 +2197,7 @@ void VID_EnableJoystick(qboolean enable)
 		// close SDL joystick if active
 		if (vid_sdljoystick)
 		{
-			if (SDL_IsGameController(vid_sdljoystickindex))
-				SDL_GameControllerClose(vid_sdljoystick);
-			else
-				SDL_JoystickClose(vid_sdljoystick);
+			SDL_JoystickClose(vid_sdljoystick);
 		}
 		vid_sdlcontroller = NULL;
 		vid_sdljoystick = NULL;
@@ -2208,11 +2205,10 @@ void VID_EnableJoystick(qboolean enable)
 		{
 			if (SDL_IsGameController(sdlindex))
 			{
-				vid_sdljoystick = SDL_GameControllerOpen(sdlindex);
-				vid_sdlcontroller = vid_sdljoystick;
-				if (vid_sdljoystick)
+				vid_sdlcontroller = SDL_GameControllerOpen(sdlindex);
+				if (vid_sdlcontroller)
 				{
-					const char *joystickname = SDL_GameControllerName(vid_sdljoystick);
+					const char *joystickname = SDL_GameControllerName(vid_sdlcontroller);
 					Con_Printf("GameController %i opened (SDL_GameController %i is \"%s\")\n", index, sdlindex, joystickname);
 				}
 				else
